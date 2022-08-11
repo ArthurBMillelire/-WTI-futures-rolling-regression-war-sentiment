@@ -8,44 +8,20 @@ Project summary - Arjun Kalsi & Arthur Boissavy
 
 Investment Idea :
 
-We chose to predict the price of oil using three types of data : the inflation rate, USD value, and inventory levels. Our first supposition is that the price of WTI oil is a function of these three components: price of oil = $F(inflation, USD, inventory)$
+We chose to predict the price of oil using three types of data : the inflation rate, USD value, and inventory levels. Our first supposition is that the price of WTI oil is a function of these three components: $$\text{price of oil} = F(inflation, USD, inventory)$$
 
 It was noted in the lectures that inflation and oil prices are highly correlated, and in our final lecture we covered the interconnectedness of inflation rates, exchange rates and inventory levels. Thus we decided to use these 3 factors in order to predict the WTI price as we believed they would form an accurate representation of it. To do this we decided to do a rolling regression where we regress on the previous n days in order to predict the oil price today. The window of the regression would be the parameter we are looking to optimize. Thus, the idea is simple: we buy when the market price is below the model price (undervalued) and we sell when the market price is over the model price (overvalued). In this way it is more or less a carry strategy where we are looking at the spread of two prices. We will optimize a threshold epsilon above and below which we will sell or buy. We will optimize the threshold in order to maximize the P&L and minimize the cost of transaction. 
-
-$π = { 1 if predict ≥ price (underpriced) −1 if predict < price (overerpriced)$
-
-$\pi = \begin{cases} \end{cases}$
-
-$$
-\begin{equation}
-\pi = 
-  \begin{cases} 
-    1 & \text{if } predict \geq price \text{ (underpriced) } \\ 
-    -1 & \text{if } predict<price \text{ (overerpriced) }
-    \end{cases}
-\end{equation}
-$$
 
 $$
 \begin{equation*}
 \pi = 
   \begin{cases} 
     \phantom{-}1 & \text{if } predict \geq price \text{ (underpriced) } \\ 
-    -1 & \text{if } predict<price \text{ (overerpriced) }
+    -1 & \text{if } predict \text{<}price \text{ (overerpriced) }
     \end{cases}
 \end{equation*}
 $$
 
-$$
-\begin{equation}
-  D_{it} =
-    \begin{cases}
-      1 & \text{if bank $i$ issues ABs at time $t$}\\
-      2 & \text{if bank $i$ issues CBs at time $t$}\\
-      0 & \text{otherwise}
-    \end{cases}       
-\end{equation}
-$$
 
 We believe this strategy may work if our model is good enough. For that we will optimize all the parameters involved such as the window of the rolling regression. Also we decided to add an epsilon parameter just like the carry strategy that we will also optimize : $1 if predict − price > ε$ (underpriced) $π = −1 if predict − price < − ε (overerpriced) 0 if|predict−price|≤ε$
 
