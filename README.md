@@ -24,9 +24,10 @@ Data used
 
 We used the three data sets :
 
-Inflation rate (https://fred.stlouisfed.org/series/T10YIE)
-USD (https://fred.stlouisfed.org/series/DTWEXBGS)
-Inventory (https://www.eia.gov/dnav/pet/pet_stoc_wstk_dcu_nus_w.htm)
+* Inflation rate (https://fred.stlouisfed.org/series/T10YIE)
+* USD (https://fred.stlouisfed.org/series/DTWEXBGS)
+* Inventory (https://www.eia.gov/dnav/pet/pet_stoc_wstk_dcu_nus_w.htm)
+
 Inflation rate data and USD data are coming from the same website FRED (https:// fred.stlouisfed.org/). These are daily data. For the inventory, as we are working on WTI we used the US energy data from (https:// www.eia.gov/). We decided to focus on the US because this dataset is made of weekly data. Thus to get daily data we decided to proceed to an interpolation.
 
 Before to use the USD which is an index we used the exchange rate between USD and Euro because we believed that this exchange rate is a good indictor however it is not fully representative of the value of the American currency. Thus we used the ‘nominal broad USD index’ which measures the value of the US dollar relative to other world currencies (not only euro). By doing so our model went from a Sharpe ratio of ≈0.20 to a Sharpe ratio of 0.42. For our geopolitical risk reduction we first started to look at the global terrorism database from Kaggle (https://www.kaggle.com/START-UMD/gtd) and we identified all the attacks which targeted utilities (oil pipeline etc...) But we had some difficulty to use the data. We decided to use the data of the deaths from conflict and terrorism per 100,000 in the Middle East & North Africa: (https://ourworldindata.org/terrorism). We believe that the conflicts in this region may have a strong impact on the price oil. As the data is yearly we interpolated daily.
